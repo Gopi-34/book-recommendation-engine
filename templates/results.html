@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Results - {{ genre.title() }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📖 {{ genre.title() }} Books</h1>
+            <p>Discover the best books in {{ genre }}</p>
+            <a href="/" style="color: white; text-decoration: underline;">← New Search</a>
+        </div>
+
+        <h2 class="section-title">💎 Underrated Gems</h2>
+        <div class="books-grid">
+            {% for book in underrated_books %}
+            <div class="book-card underrated">
+                <h3 class="book-title">{{ book.title }}
+                    <span class="badge badge-underrated">Hidden Gem</span>
+                </h3>
+                <p class="book-author">By {{ book.author }}</p>
+                <span class="book-rating rating-high">⭐ {{ book.rating }}/5</span>
+                <p class="book-genres">{{ book.genres }}</p>
+                <p class="book-description">{{ book.description }}</p>
+                <p><small>Underrated Score: {{ "%.2f"|format(book.underrated_score) }}</small></p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <h2 class="section-title">🔥 Popular Books</h2>
+        <div class="books-grid">
+            {% for book in popular_books %}
+            <div class="book-card popular">
+                <h3 class="book-title">{{ book.title }}
+                    <span class="badge badge-popular">Popular</span>
+                </h3>
+                <p class="book-author">By {{ book.author }}</p>
+                <span class="book-rating {% if book.rating|float > 4.0 %}rating-high{% else %}rating-medium{% endif %}">
+                    ⭐ {{ book.rating }}/5
+                </span>
+                <p class="book-genres">{{ book.genres }}</p>
+                <p class="book-description">{{ book.description }}</p>
+                {% if book.similar_books %}
+                <p><small>Similar to: {{ book.similar_books }}</small></p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
