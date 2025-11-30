@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Recommendation Engine</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Book Discovery Engine</h1>
+            <p>Find popular books and uncover hidden literary gems</p>
+        </div>
+
+        <form class="search-form" action="/search" method="POST">
+            <div class="form-group">
+                <label for="genre">Choose Genre:</label>
+                <select id="genre" name="genre">
+                    <option value="fiction">Fiction</option>
+                    <option value="mystery">Mystery</option>
+                    <option value="science-fiction">Science Fiction</option>
+                    <option value="fantasy">Fantasy</option>
+                    <option value="romance">Romance</option>
+                    <option value="non-fiction">Non-Fiction</option>
+                    <option value="biography">Biography</option>
+                    <option value="history">History</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="pages">Number of pages to scan (more pages = more books):</label>
+                <input type="number" id="pages" name="pages" value="2" min="1" max="5">
+            </div>
+            
+            <button type="submit" class="btn">Discover Books</button>
+        </form>
+
+        <div class="features">
+            <h2 class="section-title">What You'll Discover</h2>
+            <div class="books-grid">
+                <div class="book-card">
+                    <h3>🔥 Popular Books</h3>
+                    <p>Top-rated books with thousands of reviews</p>
+                </div>
+                <div class="book-card">
+                    <h3>💎 Underrated Gems</h3>
+                    <p>High-quality books that deserve more attention</p>
+                </div>
+                <div class="book-card">
+                    <h3>📊 Smart Analysis</h3>
+                    <p>AI-powered recommendations based on ratings and popularity</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
