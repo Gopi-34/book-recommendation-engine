@@ -13,5 +13,5 @@ Just a playful web app for finding books, made using open-source tools.
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/yourusername/book-recommendation-engine.git
+git clone https://github.com/Gopi-34/book-recommendation-engine.git
 cd book-recommendation-engine
